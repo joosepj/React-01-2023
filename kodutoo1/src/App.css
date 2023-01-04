@@ -1,0 +1,23 @@
+
+.nupp {
+  background-color: green;
+  color: lightgray
+}
+.nupp:hover {
+  height: 100px;
+  color: blue;
+}
+.nupp:active {
+  cursor: grab;
+}
+.tekst {
+  color: blue;
+  font-style: oblique;
+}
+.tekst:hover {
+  font-size: 24px;
+}
+.pilt {
+  height: 200px;
+  float: right;
+}
