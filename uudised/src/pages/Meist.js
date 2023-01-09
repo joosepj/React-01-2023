@@ -16,21 +16,17 @@ function Meist() {
     <div>Meie töötajad:</div>
     <br />
     <div>Arvo Pärt</div>
-    {/* <div>+35453434</div> */}
     <div>Uudisklippite taustamuusika</div>
     <button onClick={() => n2itaKontakt('+35453434')}>Võta ühendust</button>
     <br /><br />
     <div>Kelly Sildaru</div>
-    {/* <div>+54353453</div> */}
     <div>Püstolreporter</div>
     <button onClick={() => n2itaKontakt('+54353453')}>Võta ühendust</button>
     <br /><br />
     <div>Edward Von Lõngus</div>
-    {/* <div>+463463463</div> */}
     <div>Uudiste kujundamine</div>
     <button onClick={() => n2itaKontakt('+463463463')}>Võta ühendust</button>
     <div>Kerli Kõiv</div>
-    {/* <div>+3525295</div> */}
     <div>Välisturgude spetsialist</div>
     <button onClick={() => n2itaKontakt('+3525295')}>Võta ühendust</button>
     <br /><br />
