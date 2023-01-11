@@ -19,7 +19,7 @@ function App() {
       <img className="pilt" src="https://estonia.ee/wp-content/uploads/nobe_netist_4.jpg" alt="" />
       </Link>
       <Link to="/ostukorv">
-        <button className="nupp">Tere</button>
+        <button className="nupp">Ostukorv</button>
       </Link>
       <Link to="/lisa-toode">
         <button className="nupp">Lisa toode</button>

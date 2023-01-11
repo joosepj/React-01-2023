@@ -5,19 +5,24 @@ function Seaded() {
   // HTML uuendus käib läbi useState või URL muutuse
 const [keel, uuendaKeel] = useState(localStorage.getItem("keel") || "ee");
 
-const muudaKeelEE = () => {
-  uuendaKeel("ee");
-  localStorage.setItem("keel","ee"); //salvestus ehk saatmine brauseri lokaalmällu
-}
+// const muudaKeelEE = () => {
+  // uuendaKeel("ee");
+  // localStorage.setItem("keel","ee"); //salvestus ehk saatmine brauseri lokaalmällu
+// }
+// 
+// const muudaKeelEN = () => {
+  // uuendaKeel("en");
+  // localStorage.setItem("keel","en");
+// }
+// 
+// const muudaKeelRU = () => {
+  // uuendaKeel("ru");
+  // localStorage.setItem("keel","ru");
+// }
 
-const muudaKeelEN = () => {
-  uuendaKeel("en");
-  localStorage.setItem("keel","en");
-}
-
-const muudaKeelRU = () => {
-  uuendaKeel("ru");
-  localStorage.setItem("keel","ru");
+const muudaKeel = (uusKeel) => {
+  uuendaKeel(uusKeel);
+  localStorage.setItem("keel", uusKeel);
 }
 
 const emailLuger = useRef();
@@ -42,9 +47,9 @@ const salvestaTelefon = () => {
       <input ref={telefonLuger} type="text" />
       <button onClick={salvestaTelefon}>Sisesta</button>
       <br />
-      <button onClick={muudaKeelEE}>Eesti</button>
-      <button onClick={muudaKeelEN}>English</button>
-      <button onClick={muudaKeelRU}>Pycckuj</button>
+      <button onClick={() => muudaKeel("ee")}>Eesti</button>
+      <button onClick={() => muudaKeel("en")}>English</button>
+      <button onClick={() => muudaKeel("ru")}>Pycckuj</button>
       {keel === "ee" && <div>Leht on eesti keeles</div>}
       {keel === "en" && <div>Page is in English</div>}
       {keel === "ru" && <div>leht_on_eesti_keeles RU</div>}
