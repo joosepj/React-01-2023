@@ -17,6 +17,7 @@ function Seaded() {
     localStorage.setItem("veebilehe_kujundus", "red_mode");
     muudaKujundus("red_mode");
   }
+  
 
 
 
