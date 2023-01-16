@@ -21,7 +21,7 @@ function Poed() {
   }
 
   const sorteeriZA = () => {
-    poed.sort((a, b) => b.localeCompare(a, "et"));   // .sort() -- default sorting mis teebki A-Z. "et" et oleks eesti tähestiku järgi
+    poed.sort((a, b) => b.localeCompare(a, "et"));   // .sort() -- default sorting mis teebki Z-A. "et" et oleks eesti tähestiku järgi
     muudaPoed(poed.slice());
   }
 
