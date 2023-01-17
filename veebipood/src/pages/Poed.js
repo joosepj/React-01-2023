@@ -137,7 +137,6 @@ function Poed() {
       <div>Kristiine. Lahtiolekuaeg:</div>
       <div>Järveotsa. Lahtiolekuaeg:</div>
       <div>-----------</div>
-      {["Saab", "Ford", "Opel", "Audi"].map ((auto, j2rjekorraNumber) => <button>{j2rjekorraNumber}. {auto}</button>)}
     </div>
   )
 }

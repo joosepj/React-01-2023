@@ -16,7 +16,7 @@ import Books from './pages/Books';
 function App() {
   return (
     <div className="App">
-      <Link to="/avaleht">
+      <Link to="/">
       <img className="pilt" src="https://estonia.ee/wp-content/uploads/nobe_netist_4.jpg" alt="" />
       </Link>
       <Link to="/ostukorv">
@@ -45,16 +45,16 @@ function App() {
       </Link>
 
       <Routes>
-        <Route path="avaleht" element={< Avaleht />} />
+        <Route path="" element={< Avaleht />} />
         <Route path="ostukorv" element={< Ostukorv />} />
         <Route path="lisa-toode" element={< LisaToode />} />
         <Route path="seaded" element={< Seaded />} />
         <Route path="meist" element={< Meist />} />
         <Route path="halda-tooteid" element={< HaldaTooteid />} />
-        <Route path="muuda-toode" element={< MuudaToode />} />
+        <Route path="muuda-toode/:jrkNr" element={< MuudaToode />} />
         <Route path="poed" element={< Poed />} />
         <Route path="tooted" element={< Tooted />} />
-        <Route path="vaata-toodet" element={< YksikToode />} />
+        <Route path="vaata-toodet/:index" element={< YksikToode />} />
         <Route path="books" element={< Books />} />
       </Routes>
     </div>

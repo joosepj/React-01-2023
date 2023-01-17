@@ -11,6 +11,11 @@ function LisaToode() {
       muudaSonum("Ei saa tühja nimega toodet lisada!");
     } else {
       muudaSonum("Toode lisatud: " + inputiLuger.current.value);
+      let tootedLS = localStorage.getItem("tooted");
+      tootedLS = JSON.parse(tootedLS) || [];
+      tootedLS.push(inputiLuger.current.value);
+      tootedLS = JSON.stringify(tootedLS);
+      localStorage.setItem("tooted", tootedLS);
     }
   }
 
