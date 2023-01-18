@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 
 function Tooted() {
@@ -20,7 +19,6 @@ function Tooted() {
           <Link to={"/vaata-toodet/" + index}>
             {element}
           </Link>
-          {element}
           <button onClick={() => lisaOstukorvi(element)}>Lisa ostukorvi</button>
         </div>)}
     </div>
