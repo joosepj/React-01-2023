@@ -22,6 +22,12 @@ function Ostukorv() {
     localStorage.setItem("ostukorv", JSON.stringify(ostukorv))
   }
 
+  const arvutaKogusumma = () => {
+    let kogusumma = 0;
+    ostukorv.forEach(e => kogusumma = kogusumma + e.hind);
+    return kogusumma.toFixed(2);
+  }
+
   return (
     <div>
         {ostukorv.length > 0 && <button onClick={tyhjenda}>Tühjenda</button>}
@@ -29,7 +35,10 @@ function Ostukorv() {
         {ostukorv.length >= 2 && <div>Ostukorvis on {ostukorv.length} eset</div>}
         {ostukorv.map((element,index) =>
          <div key={index}>
-          {element}
+            <img src={element.pilt} alt="" />
+            <div>{element.nimi}</div>
+            <div>{element.hind}</div>
+            <div>{element.pilt}</div>
           <button onClick={() => lisa(element)}>+</button>
           <button onClick={() => kustuta(index)}>x</button>
           </div> )}
@@ -37,6 +46,8 @@ function Ostukorv() {
         <Link to="/tooted">
             Ostukorv on tühi, mine lisa tooteid!
         </Link>
+
+        {ostukorv.length > 0 && <div>Ostukorvi kogusumma: {arvutaKogusumma()} €</div>}
     </div>
   )
 }

@@ -12,6 +12,7 @@ import MuudaToode from './pages/MuudaToode';
 import YksikToode from './pages/YksikToode';
 import Tooted from './pages/Tooted';
 import Books from './pages/Books';
+import Poed2 from './pages/Poed2';
 
 function App() {
   return (
@@ -43,6 +44,9 @@ function App() {
       <Link to="/books">
         <button className="nupp">Books</button>
       </Link>
+      <Link to="/poed2">
+        <button className="nupp">Poed2</button>
+      </Link>
 
       <Routes>
         <Route path="" element={< Avaleht />} />
@@ -56,6 +60,7 @@ function App() {
         <Route path="tooted" element={< Tooted />} />
         <Route path="vaata-toodet/:index" element={< YksikToode />} />
         <Route path="books" element={< Books />} />
+        <Route path="poed2" element={< Poed2 />} />
       </Routes>
     </div>
   );

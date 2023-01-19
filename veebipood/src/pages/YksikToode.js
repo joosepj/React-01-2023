@@ -1,4 +1,3 @@
-import React from 'react'
 import { useParams } from 'react-router-dom'
 
 function YksikToode() {
@@ -10,7 +9,13 @@ function YksikToode() {
   return (
     <div>
       {leitudToode === undefined && <div>Toodet ei leitud</div>}
-      {leitudToode !== undefined && <div>{leitudToode}</div>}
+      {leitudToode !== undefined &&
+       <div>
+          <img src={leitudToode.pilt} alt="" />
+          <div>{leitudToode.nimi}</div>
+          <div>{leitudToode.hind}</div>
+          <div>{leitudToode.pilt}</div>
+        </div>}
     </div>
   )
 }
