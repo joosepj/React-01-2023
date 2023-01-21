@@ -8,6 +8,7 @@ import Massiiv from './pages/Massiiv';
 import LisaUudis from './pages/LisaUudis';
 import HaldaUudiseid from './pages/HaldaUudiseid';
 import YksUudis from "./pages/YksUudis";
+import MuudaUudis from './pages/MuudaUudis';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
         <Route path="lisa-uudis" element={<LisaUudis />} />
         <Route path="halda" element={<HaldaUudiseid />} />
         <Route path="uudis/:index" element={<YksUudis />} />
+        <Route path="muuda/:index" element={<MuudaUudis />} />
       </Routes>
     </div>
   );
