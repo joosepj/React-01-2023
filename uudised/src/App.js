@@ -7,6 +7,7 @@ import Uudised from './pages/Uudised';
 import Massiiv from './pages/Massiiv';
 import LisaUudis from './pages/LisaUudis';
 import HaldaUudiseid from './pages/HaldaUudiseid';
+import YksUudis from "./pages/YksUudis";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
         <Route path="massiiv" element={<Massiiv />} />
         <Route path="lisa-uudis" element={<LisaUudis />} />
         <Route path="halda" element={<HaldaUudiseid />} />
+        <Route path="uudis/:index" element={<YksUudis />} />
       </Routes>
     </div>
   );
