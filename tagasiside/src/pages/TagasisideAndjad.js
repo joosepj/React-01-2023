@@ -56,7 +56,10 @@ function TagasisideAndjad() {
         <label>Võimalda uut nime lisada lõppu</label>
         <input ref={andjaRef} type="text" /><br />
         <button onClick={lisaL6ppuNimi}>Lisa</button>
-        <div>Nimed: {andjad} </div>
+        <div>Nimed: {andjad.map(nimed =>
+            <div>
+                <div>{nimed}</div>
+            </div>)} </div>
     </div>
   )
 }
