@@ -52,7 +52,7 @@ const salvestaTelefon = () => {
       <button onClick={() => muudaKeel("ru")}>Pycckuj</button>
       {keel === "ee" && <div>Leht on eesti keeles</div>}
       {keel === "en" && <div>Page is in English</div>}
-      {keel === "ru" && <div>leht_on_eesti_keeles RU</div>}
+      {keel === "ru" && <div>leht_on_vene_keeles RU</div>}
     </div>
   )
 }
