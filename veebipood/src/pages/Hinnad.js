@@ -57,6 +57,10 @@ function Hinnad() {
         uuendaHinnad(hinnad.slice())
     }
 
+    const arvutaNumbridKokku = () => {
+        return hinnad.reduce((summa, hind) => summa + hind, 0);
+    }
+
   return (
     <div>
         <button onClick={suurendaIgayht}>Suurenda igaüht</button>
@@ -68,6 +72,7 @@ function Hinnad() {
         <button onClick={v2henda1V6rra}>Vähenda igaüht 1 võrra</button>
         <button onClick={suurenda1V6rra}>Suurenda igaüht 1 võrra</button>
         <button onClick={paaritud}>Paaritud</button>
+        <div>Summa on: {arvutaNumbridKokku()}</div>
 
         <br />
         {hinnad.map((hind, index) => <button key={index} onClick={() => kustuta(index)}>{hind}</button>)}
