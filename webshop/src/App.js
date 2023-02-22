@@ -56,7 +56,7 @@ function App() {
         <Route path="signup" element={ <Signup /> } />
         <Route path="admin" element={ <AdminHome /> } />
         <Route path="admin/add-product" element={ <AddProduct /> } />
-        <Route path="admin/edit-product" element={ <EditProduct /> } />
+        <Route path="admin/edit-product/:id" element={ <EditProduct /> } />
         <Route path="admin/maintain-products" element={ <MaintainProducts /> } />
         <Route path="admin/maintain-shops" element={ <MaintainShops /> } />
         <Route path="admin/maintain-categories" element={ <MaintainCategories/> } />
