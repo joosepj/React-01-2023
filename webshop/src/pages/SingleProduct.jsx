@@ -9,10 +9,10 @@ import React from 'react'
 // 7. Kuvame HTMLs <div>{productFound.id}</div>
 // 8. Valideerimine kui toodet ei leitud (siis võiks teada anda)
 
-function SingelProduct() {
+function SingleProduct() {
   return (
-    <div>SingeProduct</div>
+    <div>SingleProduct</div>
   )
 }
 
-export default SingelProduct
+export default SingleProduct

@@ -17,11 +17,20 @@ function HomePage() {
     setProducts(products.slice());
   }
 
-  const sortZA = () => {} // KODUS
+  const sortZA = () => {
+    products.sort((a,b) => b.name.localeCompare(a.name));
+    setProducts(products.slice());
+  } 
+  
+  const sortPriceAsc = () => {
+    products.sort((a,b) => parseFloat(a.price) - parseFloat(b.price));
+    setProducts(products.slice());
+  } 
 
-  const sortPriceAsc = () => {} // KODUS
-
-  const sortPriceDesc = () => {} // KODUS
+  const sortPriceDesc = () => {
+    products.sort((a,b) => parseFloat(b.price) - parseFloat(a.price));
+    setProducts(products.slice());
+  } 
 
   const filterByCategory = (categoryClicked) => {
     const result = productsFromFile.filter(element => element.category === categoryClicked);
