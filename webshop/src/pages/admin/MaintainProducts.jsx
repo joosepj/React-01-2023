@@ -1,19 +1,27 @@
 import productsFromFile from "../../data/products.json";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Button from "react-bootstrap/Button"
 import { Link } from "react-router-dom";
 
 function MaintainProducts() {
   const [products, setProducts] = useState(productsFromFile);
+  const searchedProductRef = useRef();
   
   const deleteProduct = (i) => {
     products.splice(i,1); //mitmendat, mitu tk
     setProducts(products.slice());
   }
     
+  const searchFromProducts = () => {
+    const found = productsFromFile.filter(element =>
+       element.name.toLowerCase().includes(searchedProductRef.current.value.toLowerCase()) );
+    setProducts(found);
+  }
 
   return (
     <div>
+        <input ref={searchedProductRef} onChange={searchFromProducts} type="text" />
+        <div>{products.length}</div>
         {products.map((element,index) =>
         <div key={element.id}>
           <div>{element.id}</div>

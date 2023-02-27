@@ -1,6 +1,7 @@
 import productsFromFile from "../data/products.json";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
+import categoriesFromFile from "../data/categories.json"
 
 function HomePage() {
 
@@ -40,8 +41,10 @@ function HomePage() {
 
   return (
     <div>
-      <button onClick={() => filterByCategory("iphone")}>iphone</button>
-      <button onClick={() => filterByCategory("macbook")}>macbook</button>
+      {/* <button onClick={() => filterByCategory("iphone")}>iphone</button> */}
+      {/* <button onClick={() => filterByCategory("macbook")}>macbook</button> */}
+      {categoriesFromFile.map(element => 
+        <button key={element.name} onClick={() => filterByCategory(element.name)}>{element.name}</button>)}
       <br />
       <div>{products.length} products shown</div>
       <br />
