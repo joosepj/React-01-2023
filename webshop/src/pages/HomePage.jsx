@@ -9,7 +9,14 @@ function HomePage() {
 
   const addToCart = (productClicked) => {
     const cartLS = JSON.parse(localStorage.getItem("cart")) || [];
-    cartLS.push(productClicked);
+    
+    const index = cartLS.findIndex(el => el.product.id === productClicked.id)
+    if (index >= 0) {
+      cartLS[index].quantity = cartLS[index].quantity + 1;
+    } else {
+      cartLS.push({product: productClicked, quantity: 1})
+    }
+
     localStorage.setItem("cart", JSON.stringify(cartLS));
   }
 
