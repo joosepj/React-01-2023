@@ -2,6 +2,7 @@ import productsFromFile from "../data/products.json";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import categoriesFromFile from "../data/categories.json"
+import { Link } from "react-router-dom"
 
 function HomePage() {
 
@@ -59,8 +60,10 @@ function HomePage() {
       <button onClick={sortZA}>Sort Z-A</button>
       <button onClick={sortPriceAsc}>Sort PRICE ASC</button>
       <button onClick={sortPriceDesc}>Sort PRICE desc</button>
-      {products.map(element =>
-         <div>
+      {products.map((element, index) =>
+         <div key={index}>
+          <Link to={"/product/" + index }>
+            <br />
             <div>{element.id}</div>
             <div>{element.name}</div>
             <div>{element.price}</div>
@@ -69,6 +72,7 @@ function HomePage() {
             <div>{element.description}</div>
             <div>{element.active}</div>
             <div>{element.date}</div>
+          </Link>
             <Button onClick={() => addToCart(element)}>Lisa ostukorvi</Button>
          </div>)}
     </div>

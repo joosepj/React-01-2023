@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import HomePage from "./pages/HomePage";
 import Cart from "./pages/Cart";
 import Shops from "./pages/Shops";
-import {ContactUs} from "./pages/ContactUs";
+import { ContactUs } from "./pages/ContactUs";
 import SingleProduct from "./pages/SingleProduct";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -51,7 +51,7 @@ function App() {
         <Route path="cart" element={ <Cart /> } />
         <Route path="shops" element={ <Shops /> } />
         <Route path="contact" element={ <ContactUs/> } />
-        <Route path="product" element={ <SingleProduct /> } />
+        <Route path="product/:index" element={ <SingleProduct /> } />
         <Route path="login" element={ <Login /> } />
         <Route path="signup" element={ <Signup /> } />
         <Route path="admin" element={ <AdminHome /> } />
