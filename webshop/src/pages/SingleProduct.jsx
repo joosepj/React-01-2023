@@ -1,6 +1,7 @@
-import React from 'react'
 import { useParams } from 'react-router-dom'
-import productsFromFile from "../data/products.json";
+import { useState, useEffect} from "react"
+// import productsFromFile from "../data/products.json";
+import config from "../data/config.json";
 
 
 // 1. Muudan URLi vastuvõtlikkuse muutuja osas+
@@ -15,8 +16,14 @@ import productsFromFile from "../data/products.json";
 
 function SingleProduct() {
   const { index } = useParams();
-  const products = productsFromFile;
+  const [products, setProducts] = useState([]);
   const productFound = products[index];
+
+  useEffect(() => {
+    fetch(config.productDbUrl)
+      .then( res => res.json())
+      .then(json => setProducts(json || []))
+  }, []);
 
 
 

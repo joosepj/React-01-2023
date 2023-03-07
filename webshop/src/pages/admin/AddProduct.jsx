@@ -1,5 +1,6 @@
 import { useRef, useState } from "react"
-import productsFromFile from "../../data/products.json"
+import { useEffect } from "react";
+import config from "../../data/config.json";
 
 
 function AddProduct() {
@@ -11,6 +12,18 @@ function AddProduct() {
   const categoryRef = useRef();
   const descriptionRef = useRef();
   const activeRef = useRef();
+  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    fetch(config.categoryDbUrl)
+    .then(res => res.json())
+    .then(json => setCategories(json || []))
+
+    fetch(config.productDbUrl)
+      .then( res => res.json())
+      .then(json => setProducts(json || []))
+  }, []);
 
   const add = () => {
     if (nameRef.current.value === "") {
@@ -30,7 +43,8 @@ function AddProduct() {
         "active": activeRef.current.checked
       }
 
-      productsFromFile.push(addProduct);
+      products.push(addProduct);
+      fetch(config.productDbUrl , {"method": "PUT", "body": JSON.stringify(products)});
 
       //localStorage.setItem("products", JSON.stringify(products));
       nameRef.current.value = "";
@@ -49,7 +63,9 @@ function AddProduct() {
         <label>Image</label>
         <input ref={imageRef} type="text" /> <br />
         <label>Category</label>
-        <input ref={categoryRef} type="text" /> <br />
+        <select ref={categoryRef}>
+          {categories.map(element => <option key={element.name}>{element.name}</option> )}
+        </select><br />
         <label>Description</label>
         <input ref={descriptionRef} type="text" /> <br />
         <label>Active</label>

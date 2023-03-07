@@ -1,19 +1,34 @@
-import productsFromFile from "../../data/products.json";
-import { useRef, useState } from "react";
+//import productsFromFile from "../../data/products.json";
+import { useEffect, useRef, useState } from "react";
 import Button from "react-bootstrap/Button"
 import { Link } from "react-router-dom";
+import config from "../../data/config.json";
 
 function MaintainProducts() {
-  const [products, setProducts] = useState(productsFromFile);
+  
   const searchedProductRef = useRef();
+  const [products, setProducts] = useState([]);
+  const [dbProducts, setDbProducts] = useState([]);
+
+  useEffect(() => {
+    fetch(config.productDbUrl)
+      .then( res => res.json())
+      .then(json => {
+        setProducts(json || [])
+        setDbProducts(json || []);
+      })
+  }, []);
   
   const deleteProduct = (i) => {
-    products.splice(i,1); //mitmendat, mitu tk
-    setProducts(products.slice());
+    dbProducts.splice(i,1); //mitmendat, mitu tk
+    setProducts(dbProducts.slice());
+    fetch(config.productDbUrl , {"method": "PUT", "body": JSON.stringify(dbProducts)})
+      .then(() => setProducts(dbProducts.slice()));
+      searchFromProducts();
   }
     
   const searchFromProducts = () => {
-    const found = productsFromFile.filter(element =>
+    const found = dbProducts.filter(element =>
        element.name.toLowerCase().includes(searchedProductRef.current.value.toLowerCase()) );
     setProducts(found);
   }

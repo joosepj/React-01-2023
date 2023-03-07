@@ -1,13 +1,14 @@
 import { useParams, useNavigate } from "react-router-dom"
-import { useRef, useState } from "react";
-import productsFromFile from "../../data/products.json"
-import categoriesFromFile from "../../data/categories.json"
+import { useEffect, useRef, useState } from "react";
+//import productsFromFile from "../../data/products.json"
 import { Alert } from "@mui/material"
+import config from "../../data/config.json";
 
 function EditProduct() {
   const { id } = useParams();
-  const productFound = productsFromFile.find(element => element.id === Number(id));
-  const index = productsFromFile.indexOf(productFound);
+  const [products, setProducts] = useState([]);  
+  const productFound = products.find(element => element.id === Number(id));
+  const index = products.indexOf(productFound);
   const idRef = useRef();
   const nameRef = useRef();
   const priceRef = useRef();
@@ -16,6 +17,19 @@ function EditProduct() {
   const descriptionRef = useRef();
   const activeRef = useRef();
   const navigate = useNavigate();
+  const [categories, setCategories] = useState([]);
+
+  
+
+  useEffect(() => {
+    fetch(config.categoryDbUrl)
+      .then(res => res.json())
+      .then(json => setCategories(json || []))
+
+    fetch(config.productDbUrl)
+      .then( res => res.json())
+      .then(json => setProducts(json || []))
+  }, []);
 
 const changeProduct = () => {
   const newProduct = {
@@ -27,14 +41,16 @@ const changeProduct = () => {
     "category": categoryRef.current.value,
     "active": activeRef.current.checked
   }
-  productsFromFile[index] = newProduct;
-  navigate("/admin/maintain-products");
+  products[index] = newProduct;
+  fetch(config.productDbUrl , {"method": "PUT", "body": JSON.stringify(products)})
+    .then(() => navigate("/admin/maintain-products"));
+  
 }
 
 const [isError, setError] = useState(false);
 
   const checkIdUniqueness = () => {
-    const found = productsFromFile.find(element => element.id === Number(idRef.current.value));
+    const found = products.find(element => element.id === Number(idRef.current.value));
     if (found === undefined) {
     // console.log("Kellelgi pole!")
       setError(false);
@@ -59,7 +75,7 @@ const [isError, setError] = useState(false);
         <label>Category</label><br />
         {/* <input ref={categoryRef} type="text" defaultValue={productFound.category}/> <br /> */}
         <select ref={categoryRef}>
-          {categoriesFromFile.map(element => <option key={element.name}>{element.name}</option> )}
+          {categories.map(element => <option key={element.name}>{element.name}</option> )}
         </select><br />
         <label>Description</label><br />
         <input ref={descriptionRef} type="text" defaultValue={productFound.description}/> <br />

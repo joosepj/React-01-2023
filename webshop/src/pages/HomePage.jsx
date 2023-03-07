@@ -1,12 +1,29 @@
-import productsFromFile from "../data/products.json";
+// import productsFromFile from "../data/products.json";
+import config from "../data/config.json";
 import Button from "react-bootstrap/Button";
-import { useState } from "react";
-import categoriesFromFile from "../data/categories.json"
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom"
+
 
 function HomePage() {
 
-  const [products, setProducts] = useState(productsFromFile);
+  const [products, setProducts] = useState([]);
+  const [dbProducts, setDbProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+
+
+  useEffect(() => {
+    fetch(config.categoryDbUrl)
+      .then(res => res.json())
+      .then(json => setCategories(json || []))
+
+    fetch(config.productDbUrl)
+      .then( res => res.json())
+      .then( json => {
+        setProducts(json || [])
+        setDbProducts(json || [])
+      })
+  }, []);
 
   const addToCart = (productClicked) => {
     const cartLS = JSON.parse(localStorage.getItem("cart")) || [];
@@ -42,7 +59,7 @@ function HomePage() {
   } 
 
   const filterByCategory = (categoryClicked) => {
-    const result = productsFromFile.filter(element => element.category === categoryClicked);
+    const result = dbProducts.filter(element => element.category === categoryClicked);
     setProducts(result);
   }
 
@@ -51,7 +68,7 @@ function HomePage() {
     <div>
       {/* <button onClick={() => filterByCategory("iphone")}>iphone</button> */}
       {/* <button onClick={() => filterByCategory("macbook")}>macbook</button> */}
-      {categoriesFromFile.map(element => 
+      {categories.map(element => 
         <button key={element.name} onClick={() => filterByCategory(element.name)}>{element.name}</button>)}
       <br />
       <div>{products.length} products shown</div>
