@@ -1,8 +1,8 @@
-// import productsFromFile from "../data/products.json";
 import config from "../data/config.json";
 import Button from "react-bootstrap/Button";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom"
+import Spinner from "react-bootstrap/Spinner";
 
 
 function HomePage() {
@@ -10,6 +10,7 @@ function HomePage() {
   const [products, setProducts] = useState([]);
   const [dbProducts, setDbProducts] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [isLoading, setLoading] = useState(true);
 
 
   useEffect(() => {
@@ -22,6 +23,7 @@ function HomePage() {
       .then( json => {
         setProducts(json || [])
         setDbProducts(json || [])
+        setLoading(false);
       })
   }, []);
 
@@ -62,7 +64,9 @@ function HomePage() {
     const result = dbProducts.filter(element => element.category === categoryClicked);
     setProducts(result);
   }
-
+  if (isLoading === true) {
+  return <Spinner />
+  }
 
   return (
     <div>
@@ -79,7 +83,7 @@ function HomePage() {
       <button onClick={sortPriceDesc}>Sort PRICE desc</button>
       {products.map((element, index) =>
          <div key={index}>
-          <Link to={"/product/" + index }>
+          <Link to={"/product/" + element.id}>
             <br />
             <div>{element.id}</div>
             <div>{element.name}</div>

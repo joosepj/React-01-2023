@@ -3,12 +3,16 @@ import { useEffect, useRef, useState } from "react";
 import Button from "react-bootstrap/Button"
 import { Link } from "react-router-dom";
 import config from "../../data/config.json";
+import Spinner from "react-bootstrap/Spinner";
+
 
 function MaintainProducts() {
   
   const searchedProductRef = useRef();
   const [products, setProducts] = useState([]);
   const [dbProducts, setDbProducts] = useState([]);
+  const [isLoading, setLoading] = useState(true);
+
 
   useEffect(() => {
     fetch(config.productDbUrl)
@@ -16,6 +20,7 @@ function MaintainProducts() {
       .then(json => {
         setProducts(json || [])
         setDbProducts(json || []);
+        setLoading(false);
       })
   }, []);
   
@@ -32,13 +37,16 @@ function MaintainProducts() {
        element.name.toLowerCase().includes(searchedProductRef.current.value.toLowerCase()) );
     setProducts(found);
   }
+  if (isLoading === true) {
+    return <Spinner />
+    }
 
   return (
     <div>
         <input ref={searchedProductRef} onChange={searchFromProducts} type="text" />
         <div>{products.length}</div>
         {products.map((element,index) =>
-        <div key={element.id}>
+        <div key={element.id} className={ element.active === true ? "active": undefined }>
           <div>{element.id}</div>
           <div>{element.name}</div>
           <div>{element.price}</div>

@@ -50,6 +50,29 @@ function Cart() {
     localStorage.setItem("cart", JSON.stringify(cart));
   }
 
+  const pay = () => {
+    const url = "https://igw-demo.every-pay.com/api/v4/payments/oneoff"
+
+    const headers = {
+      "Authorization": "Basic ZTM2ZWI0MGY1ZWM4N2ZhMjo3YjkxYTNiOWUxYjc0NTI0YzJlOWZjMjgyZjhhYzhjZA==",
+      "Content-Type": "application/json"
+    }; //metaandmed mis kulub tuleb body + sisselogimise tunnused
+
+    const body = {
+      "api_username": "e36eb40f5ec87fa2",
+      "account_name": "EUR3D1",
+      "amount": calculateSumOfCart(),
+      "order_reference": Math.floor(Math.random()*999999),
+      "nonce": "dasdsadas" + Math.floor(Math.random()*999999) + new Date(),
+      "timestamp": new Date(),
+      "customer_url": "https://joosepiveeb.web.app" // firebase.json failist site: "" jutumärkide sees
+    }; // andmed mille alusel uut makset salvestada
+
+    fetch(url,{"method": "POST", "body": JSON.stringify(body), "headers": headers})
+      .then(res => res.json())
+      .then(json => window.location.href = json.payment_link);
+  }
+
   return (
     <div>
       <div className="cart-top">
@@ -58,9 +81,10 @@ function Cart() {
       {cart.length === 1 && <div>There is one item in the cart - {calculateItems()} tk </div>}
       {cart.length >= 2 && <div>There is {cart.length} items in the cart</div>}
       {cart.length === 0 && <div>The cart is empty</div>}
-      <select className="selection">
+      {cart.length > 0 && <select className="selection">
         {parcelmachines.map(pm => <option key={pm.NAME}>{pm.NAME}</option>)}
-      </select>
+      </select>}
+      {cart.length > 0 && <Button onClick={pay}>Maksma</Button>}
       </div>
       <div>
         {cart.map((element, index) =>

@@ -26,11 +26,28 @@ function AddProduct() {
   }, []);
 
   const add = () => {
-    if (nameRef.current.value === "") {
-      setMessage("Need a name!");
-    } else {
+    if (idRef.current.value === "") {
+      setMessage("Need an ID!");
+      return;
+    } 
+    if (nameRef.current.value.charAt(0).toLowerCase() === nameRef.current.value.charAt(0)) {
+      setMessage("Name must start with capital letter");
+      return;
+    } if (/^[A-Z]+[a-zA-Z]*$/.test(nameRef.current.value) === false) {
+      setMessage("Name must start with capital letter!");
+      return; // return lõpetab funktsiooni
+    } 
+    if (priceRef.current.value === "") {
+      setMessage("Need a price!");
+      return; // return lõpetab funktsiooni
+    } 
+    if (/^\S*$/.test(imageRef.current.value) === false) {
+      setMessage("Image URL must not have space in it!");
+      return; // return lõpetab funktsiooni
+    }
+    //else {
       setMessage("Product added:" +  nameRef.current.value);
-
+    
       //const products = JSON.parse(localStorage.getItem("products")) || [];
 
       const addProduct = {
@@ -47,8 +64,14 @@ function AddProduct() {
       fetch(config.productDbUrl , {"method": "PUT", "body": JSON.stringify(products)});
 
       //localStorage.setItem("products", JSON.stringify(products));
+      idRef.current.value = "";
       nameRef.current.value = "";
-    }
+      priceRef.current.value = "";
+      imageRef.current.value = "";
+      categoryRef.current.value = "";
+      descriptionRef.current.value = "";
+      activeRef.current.checked = false;
+    //}
   }
 
   return (

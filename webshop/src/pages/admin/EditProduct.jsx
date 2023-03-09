@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 //import productsFromFile from "../../data/products.json"
 import { Alert } from "@mui/material"
 import config from "../../data/config.json";
+import Spinner from "react-bootstrap/Spinner";
+
 
 function EditProduct() {
   const { id } = useParams();
@@ -18,8 +20,8 @@ function EditProduct() {
   const activeRef = useRef();
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
-
-  
+  const [isLoading, setLoading] = useState(true);
+  const [message, setMessage] = useState();
 
   useEffect(() => {
     fetch(config.categoryDbUrl)
@@ -28,10 +30,33 @@ function EditProduct() {
 
     fetch(config.productDbUrl)
       .then( res => res.json())
-      .then(json => setProducts(json || []))
+      .then(json => {
+        setProducts(json || []);
+        setLoading(false);
+      })
+      
   }, []);
 
 const changeProduct = () => {
+  if (idRef.current.value === "") {
+    setMessage("Need an ID!");
+    return;
+  } 
+  if (nameRef.current.value.charAt(0).toLowerCase() === nameRef.current.value.charAt(0)) {
+    setMessage("Name must start with capital letter");
+    return;
+  } //if (/^[A-Z]+[a-zA-Z0-9]*$/.test(nameRef.current.value) === false) {
+    //setMessage("Name must start with capital letter!");
+    //return; // return lõpetab funktsiooni
+  //} 
+  if (priceRef.current.value === "") {
+    setMessage("Need a price!");
+    return; // return lõpetab funktsiooni
+  } 
+  if (/^\S*$/.test(imageRef.current.value) === false) {
+    setMessage("Image URL must not have space in it!");
+    return; // return lõpetab funktsiooni
+  }
   const newProduct = {
     "id": Number(idRef.current.value),
     "image": imageRef.current.value,
@@ -59,9 +84,13 @@ const [isError, setError] = useState(false);
       setError(true);
     }
   }
+  if (isLoading === true) {
+    return <Spinner />
+    }
   
   return (
     <div>
+      <div>{message}</div>
       {isError === true && <Alert severity="error"> Sisestatud ID on juba olemas</Alert>}
       {productFound !== undefined && <div>
         <label>ID</label><br />

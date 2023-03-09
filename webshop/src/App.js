@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import HomePage from "./pages/HomePage";
 import Cart from "./pages/Cart";
 import Shops from "./pages/Shops";
@@ -18,6 +18,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
+import NotFound from './pages/NotFound';
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -51,7 +52,7 @@ function App() {
         <Route path="cart" element={ <Cart /> } />
         <Route path="shops" element={ <Shops /> } />
         <Route path="contact" element={ <ContactUs/> } />
-        <Route path="product/:index" element={ <SingleProduct /> } />
+        <Route path="product/:id" element={ <SingleProduct /> } />
         <Route path="login" element={ <Login /> } />
         <Route path="signup" element={ <Signup /> } />
         <Route path="admin" element={ <AdminHome /> } />
@@ -60,6 +61,8 @@ function App() {
         <Route path="admin/maintain-products" element={ <MaintainProducts /> } />
         <Route path="admin/maintain-shops" element={ <MaintainShops /> } />
         <Route path="admin/maintain-categories" element={ <MaintainCategories/> } />
+        <Route path="*" element={ <NotFound/> } />
+        {/* <Route path="*" element={ <Navigate to "/" /> } /> */}
       </Routes>
     </div>
   );
