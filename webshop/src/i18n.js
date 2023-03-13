@@ -15,6 +15,7 @@ const resources = {
       "maintain-products": "Maintain Products",
       "maintain-categories": "Maintain Categories",
       "maintain-shops": "Maintain Shops",
+      "INVALID_EMAIL": "Invalid email",
     }
   },
   ee: {
@@ -27,6 +28,7 @@ const resources = {
       "maintain-products": "Halda tooteid",
       "maintain-categories": "Halda kategooriaid",
       "maintain-shops": "Halda poode",
+      "INVALID_EMAIL": "Puudub email",
     }
   }
 };

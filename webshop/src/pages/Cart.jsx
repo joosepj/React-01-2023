@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import "../css/Cart.css";
 import { Button } from "@mui/material";
+import CartSumContext from '../store/CartSumContext';
 
 function Cart() {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || [])
   const [parcelmachines, setParcelmachines] = useState([]);
+  const CartSumCtx = useContext(CartSumContext);
 
   useEffect(() => {
     fetch("https://www.omniva.ee/locations.json")
@@ -15,12 +17,14 @@ function Cart() {
   const emptyCart = () => {
     setCart([]);
     localStorage.setItem("cart", JSON.stringify([]));
+    CartSumCtx.setCartSum(0);
   }
 
   const deleteFromCart = (lineNumber) => {
     cart.splice(lineNumber,1);
     setCart(cart.slice());
     localStorage.setItem("cart", JSON.stringify(cart))
+    CartSumCtx.setCartSum(calculateSumOfCart());
   }
 
   const calculateSumOfCart = () => {
@@ -42,12 +46,16 @@ function Cart() {
     }
     setCart(cart.slice());
     localStorage.setItem("cart", JSON.stringify(cart));
+    CartSumCtx.setCartSum(calculateSumOfCart());
+
   }
 
   const increaseQuantity = (index) => {
     cart[index].quantity = cart[index].quantity +1;
     setCart(cart.slice());
     localStorage.setItem("cart", JSON.stringify(cart));
+    CartSumCtx.setCartSum(calculateSumOfCart());
+
   }
 
   const pay = () => {
