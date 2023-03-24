@@ -4,6 +4,8 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom"
 import Spinner from "react-bootstrap/Spinner";
 import CartSumContext from "../store/CartSumContext";
+import "../css/HomePage.css";
+
 
 
 function HomePage() {
@@ -84,10 +86,10 @@ function HomePage() {
       <br />
       <div>{products.length} products shown</div>
       <br />
-      <button onClick={sortAZ}>Sort A-Z</button>
-      <button onClick={sortZA}>Sort Z-A</button>
-      <button onClick={sortPriceAsc}>Sort PRICE ASC</button>
-      <button onClick={sortPriceDesc}>Sort PRICE desc</button>
+      <Button onClick={sortAZ}>Sort A-Z</Button>
+      <Button onClick={sortZA}>Sort Z-A</Button>
+      <Button onClick={sortPriceAsc}>Sort PRICE ASC</Button>
+      <Button onClick={sortPriceDesc}>Sort PRICE desc</Button>
       {products.map((element, index) =>
         <div key={index}>
           <Link to={"/product/" + element.id}>
