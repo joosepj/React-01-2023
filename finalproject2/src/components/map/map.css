@@ -1,0 +1,17 @@
+.m {
+    height: 100vh;
+    background-color:beige;
+    padding: 50px;
+    }
+
+.m-title {
+    font-size: 5em;
+}
+
+.m-text {
+    font-size: 1.2em;
+}
+
+.leaflet-container {
+    height: 75%;
+}

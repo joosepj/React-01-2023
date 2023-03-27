@@ -1,30 +1,51 @@
 .g {
-    display: flex;
     height: 100vh;
-}
-
-.g-left {
-    flex: 1;
-    background-color: bisque;
+    background-color:beige;
     padding: 50px;
-}
-
-.g-right {
-    flex: 2;
-    background-color: cornsilk;
-}
-
-.g-card {
-    font-size: 30px;
-}
-
+    }
+    
 .g-title {
-    font-size: 60px;
-    font-weight: 300;
-    margin-top: 100px;
-}
+    font-size: 5em;
+    }
+
 .g-text {
-    margin: 20px 5px;
+    font-size: 1.2em; 
+    }
+    
+.g-carousel {
+    height: 200px; 
+    width: 75%;
+    margin: 0 auto;
+    display: block;
+    }
+    
+.g-carousel img {
+    max-width: 100%; 
+    max-height: 100%;
+    border-radius: 10px;
+    }
+
+    .g-carousel .carousel-control-prev, 
+.g-carousel .carousel-control-next {
+  width: 7%; /* adjust the width of the controls */
+  border-radius: 10px ;
+  background-color: rgba(0, 0, 0, 0); /* add a transparent black background to the controls */
+  transition: all 0.3s ease-in-out; /* add a smooth transition effect on hover */
 }
 
+.g-carousel .carousel-control-prev:hover, 
+.g-carousel .carousel-control-next:hover {
+  background-color: rgba(0, 0, 0, 0.8); /* darken the background on hover */
+}
 
+.g-carousel .carousel-control-prev-icon, 
+.g-carousel .carousel-control-next-icon {
+  color: white; /* change the color of the control icons */
+  font-size: 3em; /* increase the font size of the control icons */
+  transition: all 0.3s ease-in-out; /* add a smooth transition effect on hover */
+}
+
+.g-carousel .carousel-control-prev:hover .carousel-control-prev-icon, 
+.g-carousel .carousel-control-next:hover .carousel-control-next-icon {
+  transform: scale(1.1); /* increase the size of the control icons on hover */
+}

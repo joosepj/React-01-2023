@@ -1,6 +1,7 @@
 .i {
     display: flex;
     height: 100vh;
+    background-color: antiquewhite;
 }
 
 .i-left{

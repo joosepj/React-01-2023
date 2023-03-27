@@ -1,0 +1,41 @@
+.v {
+    height: 100vh;
+    padding: 50px;
+    background-color:antiquewhite
+    }
+
+.v-title {
+    font-size: 5em;
+}
+
+.v-text {
+    font-size: 1.2em;
+    padding: 15px;
+    }
+    
+.v-carousel {
+    height: 200px; 
+    width: 75%;
+    margin: 0 auto;
+    display: block;
+    }
+    
+.v-carousel video {
+    max-width: 100%; 
+    max-height: 100%;
+    border-radius: 10px;
+    }
+
+#videospecific-carousel .carousel-control-prev,
+#videospecific-carousel .carousel-control-next {
+      width: 30px;
+      height: auto;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+#videospecific-carousel .carousel-indicators {
+    display: none;
+    }
+      
+
