@@ -89,7 +89,7 @@ function Map() {
     <div className="m">
       <div className="m-desc">
         <h1 className="m-title">Kaart</h1>
-        <p className="m-text">see on siis kaart et</p>
+        <p className="m-text">Siin kaardil on nuppudega märgitud kõik külastatud kohad.<br></br> Kliki nupu peal, et näha täpsemat infot.<br></br></p>
       </div>
       <MapContainer center = {[41.89341798721719, 12.486616284814561]} zoom ={13}>
         <TileLayer
@@ -101,11 +101,8 @@ function Map() {
           <Marker position={marker.geocode} icon={customIcon}>
               <Popup>{marker.popUp}</Popup>
           </Marker>
-
         ))
-
       }
-
       </MapContainer>
     </div>
   )

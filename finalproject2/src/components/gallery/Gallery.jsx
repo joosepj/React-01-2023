@@ -8,7 +8,7 @@ function Gallery() {
         <div className="g">
             <div className="g-desc">
                 <h1 className="g-title">Pildigalerii</h1>
-                <p className="g-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus natus dolor voluptates quae corporis, voluptatum in esse omnis maxime? Ducimus eius veritatis ipsa praesentium reprehenderit natus repellat itaque, similique quo.</p>
+                <p className="g-text">Valik huvitavamatest piltidest.<br></br> Kliki pildi paremasse või vasakusse serva, et navigeerida erinevate piltide vahel. </p>
             </div>
             <div className="g-carousel">
                 <Carousel interval={null}>

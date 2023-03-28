@@ -9,8 +9,8 @@ function Videos() {
   return (
     <div className="v">
       <div className="v-desc">
-        <h1 className="v-title">Videod</h1>
-        <p className="v-text">Mõned paremad klipid</p>
+        <h1 className="v-title">Videogalerii</h1>
+        <p className="v-text">Mõned valitud klipid. <br></br>Kliki video paremasse või vasakusse serva, et navigeerida erinevate piltide vahel.<br></br>Videol on ka heli.</p>
       </div>
       <div className="v-carousel">
         <Carousel id="videospecific-carousel" interval={null}>

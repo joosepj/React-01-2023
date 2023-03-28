@@ -2,14 +2,21 @@
     height: 100vh;
     background-color:beige;
     padding: 50px;
-    }
+    overflow: hidden;
+}
+.m-desc {
+    border-top-style: solid;
+    border-left-style: solid;
+    border-width: 5px;
 
+}
 .m-title {
     font-size: 5em;
 }
 
 .m-text {
-    font-size: 1.2em;
+    font-size: 1.5em;
+    margin-left: 5px;
 }
 
 .leaflet-container {
