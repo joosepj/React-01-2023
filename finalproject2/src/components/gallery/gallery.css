@@ -1,7 +1,9 @@
 .g {
     min-height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     background-color:beige;
     padding: 50px;
+    overflow: hidden;
 }
 
 .g-desc {
@@ -22,8 +24,8 @@
 .g-carousel {
     max-width: 75%;
     margin: 0 auto;
-    display: block;
-    overflow: hidden;
+    text-align: center;
+    
 }
     
 .g-carousel img {
@@ -55,4 +57,34 @@
 .g-carousel .carousel-control-prev:hover .carousel-control-prev-icon, 
 .g-carousel .carousel-control-next:hover .carousel-control-next-icon {
   transform: scale(1.1); /* increase the size of the control icons on hover */
+}
+
+/* For screens smaller than 768px */
+@media (max-width: 767px) {
+  
+  .g-carousel {
+    max-width: 70%;
+  }
+}
+
+/* For screens 768px and larger */
+@media (min-width: 768px) {
+    
+  .g-carousel {
+    max-width: 75%;
+  }
+}
+
+/* For screens 992px and larger */
+@media (min-width: 992px) {
+  .g-carousel {
+    max-width: 55%;
+  }
+}
+
+/* For screens 1200px and larger */
+@media (min-width: 1200px) {
+  .g-carousel {
+    max-width: 55%;
+  }
 }

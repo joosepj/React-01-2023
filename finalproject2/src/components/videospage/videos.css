@@ -1,7 +1,9 @@
 .v {
     min-height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     padding: 50px;
     background-color:antiquewhite;
+    overflow: hidden;
     }
 
 .v-desc {
@@ -22,7 +24,7 @@
 .v-carousel {
     max-width: 75%;
     margin: 0 auto;
-    display: block;
+    text-align: center;
 
     }
     
@@ -48,7 +50,7 @@
 @media (max-width: 767px) {
   
   .v-carousel {
-    max-width: 90%;
+    max-width: 70%;
   }
 }
 
@@ -63,7 +65,15 @@
 /* For screens 992px and larger */
 @media (min-width: 992px) {
   .v-carousel {
-    max-width: 80%;
+    max-width: 55%;
   }
 }
+
+/* For screens 1200px and larger */
+@media (min-width: 1200px) {
+  .v-carousel {
+    max-width: 65%;
+  }
+}
+
 
