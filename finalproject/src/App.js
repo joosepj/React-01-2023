@@ -1,32 +1,23 @@
-import { Link, Route, Routes } from "react-router-dom";
-import Avaleht from "./pages/Avaleht";
-import Kaart from "./pages/Kaart";
-import Pildid from "./pages/Pildid";
-import Videod from "./pages/Videod";
-
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import { Route, Routes } from "react-router-dom";
+import Services from "./pages/Services";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
-    <div>
-      <Link to="/">
-        <button>Avalehele</button>
-      </Link>
-      <Link to ="/pildid">
-        <button>Pildid</button>
-      </Link>
-      <Link to="/videod">
-        <button>Videod</button>
-      </Link>
-      <Link to="/kaart">
-        <button>Kaart</button>
-      </Link>
+    <div className="App">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/menu" element={<Services />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+    
 
-      <Routes>
-        <Route path="" exact element={<Avaleht /> } />
-        <Route path="pildid" exact element={<Pildid /> } />
-        <Route path="videod" exact element={<Videod /> } />
-        <Route path="kaart" exact element={<Kaart /> } />
-      </Routes>
     </div>
   );
 }
